@@ -1,0 +1,24 @@
+# set python image
+# alpine: small Python Docker image based on Alpine Linux
+# stretch: official Python image based on Debian 9
+FROM python:3.6-alpine
+
+# set working directory in the container
+WORKDIR /ml_app
+
+# dispatch useful flask env variables
+ENV FLASK_APP "./app.py"
+ENV FLASK_DEBUG True
+ENV FLASK_RUN_HOST 0.0.0.0
+
+# install prerequisities dependencies
+RUN apk add --no-cache gcc musl-dev linux-headers
+
+# Copy local directory to /ml_app in container
+COPY . /ml_app
+
+# install dependencies in the container
+RUN pip install -r requirements.txt
+
+# run flask build-in server
+CMD ["flask", "run"]
