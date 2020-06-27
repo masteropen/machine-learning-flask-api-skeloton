@@ -1,20 +1,17 @@
-from flask import Flask, request
+from flask import Flask
+from app.api.controllers import api
 
-
+# Define the WSGI application object
 app = Flask(__name__)
 
+# Configurations
+app.config.from_object('config')
 
-@app.route('/')
-def index():
-    return 'Happy to see you !'
-
-
-# this an example of the exposed api to client(s)
-@app.route('/predict', methods=['POST'])
-def predict():
-    return 'predict salary for an employee having ' + request.form['years_experience'] + ' years of experience'
+# Register blueprint(s)
+app.register_blueprint(api)
 
 
+# global routes
 @app.errorhandler(400)
 def bad_request(error):
     return {

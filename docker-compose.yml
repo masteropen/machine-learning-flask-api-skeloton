@@ -5,4 +5,4 @@ services:
     ports:
       - "${HOST_FLASK_PORT}:${CONTAINER_FLASK_PORT}"
     volumes:
-      - ./app:${CONTAINER_PROJECT_DIRECTORY}
+      - ./src:${CONTAINER_PROJECT_DIRECTORY}
