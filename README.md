@@ -16,11 +16,11 @@ Build and run the skeleton
 2. (Optional) Customize `.env` file and eventually the variable `WORKDIR` in `Dockerfile` to match your own project
 directory name under the container.
 
-3. Build and run container :
-`docker-compose up --build`
-
-4. (Optional) if you change `CONTAINER_FLASK_PORT` in `.env`, make sure to match the same port value in 
+3. (Optional) if you change `CONTAINER_FLASK_PORT` in `.env`, make sure to match the same port value in 
 `./src/config.py`
+
+4. Build and run container :
+`docker-compose up --build`
 
 5. Run `./src/app/api/main.py` script to dump model result into `./src/app/dumps` folder
 
